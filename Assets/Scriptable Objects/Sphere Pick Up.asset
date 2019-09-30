@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0796fd83500354ebab30ea4bc3347e, type: 3}
+  m_Name: Sphere Pick Up
+  m_EditorClassIdentifier: 
+  ItemToPickUp: {fileID: 5261683642060162327, guid: c109f01a76a181045ab1b31bb69a05fd,
+    type: 3}
+  ItemMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  DecayTime: 30
+  PickUpRange: 2
