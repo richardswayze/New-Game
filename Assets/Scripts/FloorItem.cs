@@ -19,13 +19,14 @@ public class FloorItem : Item
                 Player.instance.isBuilding = true;
             }
         }
-        else
+        else if (Player.instance.isBuilding && previewObject.GetComponent<BuildingPreview>().buildable)
         {
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             if (Physics.Raycast(ray, out RaycastHit hit, Player.instance.placementDistance))
             {
                 Instantiate(prefab, hit.point + new Vector3(0f, prefab.transform.localScale.y / 2f, 0f), Quaternion.identity);
                 Destroy(previewObject);
+                PlayerInventory.instance.DecrementItem(PlayerInventory.instance.activeItem, 1);
                 previewObject = null;
                 prefab = null;
                 Player.instance.isBuilding = false;

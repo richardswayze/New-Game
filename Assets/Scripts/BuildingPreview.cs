@@ -6,11 +6,14 @@ public class BuildingPreview : MonoBehaviour
 {
     [SerializeField] Material buildableMat;
     [SerializeField] Material notBuildableMat;
+    [SerializeField] float collisionTolerance = .02f;
+    [SerializeField] float collisionCushion = .002f;
 
     public GameObject prefabToBuild;
+    public bool buildable = true;
 
-    bool buildable = true;
     MeshRenderer meshRend;
+    List<Collider> colliders = new List<Collider>();
 
     private void Awake()
     {
@@ -19,20 +22,21 @@ public class BuildingPreview : MonoBehaviour
 
     private void Update()
     {
+        buildable = colliders.Count <= 0;
         meshRend.material = buildable ? buildableMat : notBuildableMat;
 
         PerformRayCast();
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        buildable = false;
-        Debug.Log(other.name);
+        colliders.Add(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        buildable = true;
+        colliders.Remove(other);
     }
 
     private void PerformRayCast()
@@ -40,7 +44,7 @@ public class BuildingPreview : MonoBehaviour
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(ray, out RaycastHit hit, Player.instance.placementDistance))
         {
-            transform.position = hit.point + new Vector3(0f, transform.localScale.y / 2f, 0f);
+                transform.position = hit.point + new Vector3(0f, transform.localScale.y * .5f + collisionCushion, 0f);
         }
     }
 }

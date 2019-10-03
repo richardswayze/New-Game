@@ -26,4 +26,5 @@ public class ItemDefinition : ScriptableObject
 
     //Prefab represented by this ItemDefinition
     public GameObject PrefabInstance;
+
 }

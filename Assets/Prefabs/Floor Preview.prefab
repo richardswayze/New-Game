@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373403806497977880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1120605, y: 0.25, z: -17.215088}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 5, y: 0.5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,5 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildableMat: {fileID: 2100000, guid: 3bd69a592d3e6fd459615b2f63df6acd, type: 2}
   notBuildableMat: {fileID: 2100000, guid: 318f09e10bed2d54595315053d3c8125, type: 2}
+  collisionTolerance: 0.02
+  collisionCushion: 0.0001
   prefabToBuild: {fileID: 4294349318550893304, guid: 46e1ae5591e74b240b7dcc6aa049c524,
     type: 3}
+  buildable: 1

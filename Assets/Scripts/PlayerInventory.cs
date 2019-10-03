@@ -38,7 +38,6 @@ public class PlayerInventory : Singleton<PlayerInventory>
             if (Player.instance.isBuilding)
             {
                 activeItem._item.Use();
-                DecrementItem(activeItem, 1);
                 if (activeItem._amount <= 0)
                 {
                     inventory.Remove(activeItem);
@@ -68,26 +67,15 @@ public class PlayerInventory : Singleton<PlayerInventory>
         }
 
         //Checks if inventory already contains the item to store
-        //Adds item to empty hotkey slot
-        if (inventory.Contains(entry))
+        for (int i = 0; i < inventory.Count; i++)
         {
-            inventory[inventory.IndexOf(entry)]._amount += amountToStore;
-            if (hotkeyItems.ContainsValue(entry))
+            if (inventory[i]._item == itemToStore)
             {
-                for (int j = 0; j <= 9; j++)
-                {
-                    if (hotkeyItems[j] == entry)
-                    {
-                        return;
-                    }
-                    else if (hotkeyItems[j] == null)
-                    {
-                        hotkeyItems[j] = entry;
-                        return;
-                    }
-                }
+                inventory[i]._amount += amountToStore;
+                return;
             }
         }
+        
         
         //Adds item to new inventory slot and searches for empty hotkey slot
         //Sets item to active if that hotkey slot is currently active

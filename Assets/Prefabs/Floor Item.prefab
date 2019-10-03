@@ -44,4 +44,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDefinition: {fileID: 11400000, guid: d6069d43e10d93f4cafdd81db3bae877, type: 2}
-  amount: 0
