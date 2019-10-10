@@ -5,8 +5,9 @@ using UnityEngine;
 public class Player : Singleton<Player> {
 
     public int placementDistance;
-    public Item testItem;
+    public Item[] testItem;
     public bool isBuilding = false;
+    public bool snapping = true;
 
     private void Update()
     {
@@ -22,7 +23,16 @@ public class Player : Singleton<Player> {
 
         if (Input.GetMouseButtonDown(1))
         {
-            PlayerInventory.instance.StoreItem(testItem, 5);
+            foreach (Item item in testItem)
+            {
+                PlayerInventory.instance.StoreItem(item, 10);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            snapping = !snapping;
+            Debug.Log("Snap  mode: " + (snapping == true ? "On" : "Off"));
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha0))

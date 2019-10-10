@@ -24,7 +24,7 @@ public class FloorItem : Item
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             if (Physics.Raycast(ray, out RaycastHit hit, Player.instance.placementDistance))
             {
-                Instantiate(prefab, hit.point + new Vector3(0f, prefab.transform.localScale.y / 2f, 0f), Quaternion.identity);
+                Instantiate(prefab, previewObject.transform.position, Quaternion.identity);
                 Destroy(previewObject);
                 PlayerInventory.instance.DecrementItem(PlayerInventory.instance.activeItem, 1);
                 previewObject = null;
